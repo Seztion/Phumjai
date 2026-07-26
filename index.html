@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phumjau CARD</title>
+    <title>Phumjau - Little Angel</title>
     <style>
         /* =========================================
-           1. สไตล์พื้นฐานและการจัดวาง (ธีม เทวดาขาว-ดำ)
+           1. สไตล์พื้นฐานและการจัดวาง (เน้นสีขาวสว่าง)
            ========================================= */
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
+            background-color: #f0f2f5;
+            color: #2c3e50;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
@@ -24,46 +24,48 @@
         .card-container {
             position: relative;
             width: 380px;
-            background: #181818;
-            border: 1px solid #e0e0e0;
-            border-radius: 16px;
-            box-shadow: 0 4px 25px rgba(255, 255, 255, 0.08);
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             z-index: 10;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* ลูกเล่น: ยกการ์ดลอยขึ้นและส่องแสงขาวนวลเมื่อเมาส์ชี้ */
+        /* ยกการ์ดลอยขึ้นพร้อมเรืองแสงขาวนวล */
         .card-container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.9), 0 10px 25px rgba(200, 210, 225, 0.4);
         }
 
-        /* ลูกเล่น: ป้าย Badge เทวดา ตัวอักษรและแสงนวลๆ */
+        /* ป้าย Badge เทวดา ตัวหนังสือเข้มบนพื้นขาวเรืองแสง */
         .stamp-badge {
             position: absolute;
             top: 15px;
             right: 15px;
             background: #ffffff;
-            color: #0d0d0d;
-            padding: 4px 10px;
+            color: #4a5568;
+            padding: 4px 12px;
             font-size: 0.7rem;
             font-weight: bold;
             letter-spacing: 1px;
             border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 5;
             animation: pulse-angel 2s infinite alternate;
         }
 
         @keyframes pulse-angel {
-            0% { box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); }
-            100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.5); }
+            0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 2px 8px rgba(0,0,0,0.08); }
+            100% { box-shadow: 0 0 18px rgba(255, 255, 255, 1), 0 0 12px rgba(160, 174, 192, 0.4); }
         }
 
         .banner-wrapper {
             position: relative;
             height: 120px;
             overflow: hidden;
+            background-color: #edf2f7;
         }
 
         .banner-img {
@@ -82,7 +84,7 @@
             bottom: 0;
             width: 100%;
             height: 50px;
-            background: linear-gradient(to top, #181818, transparent);
+            background: linear-gradient(to top, #ffffff, transparent);
         }
 
         .card-content {
@@ -90,19 +92,56 @@
             text-align: center;
         }
 
+        /* จัดวางรูปพร้อมปีกนางฟ้าขนาบข้าง */
         .avatar-wrapper {
-            margin-top: -45px;
+            margin-top: -50px;
             margin-bottom: 5px;
             display: inline-block;
+            position: relative;
         }
 
-        /* ลูกเล่น: กรอบรูปมีออร่าเทวดาสีขาวนวลวนรอบๆ */
+        /* รูปทรงปีกนางฟ้าจำลองข้างรูปโปรไฟล์ */
+        .avatar-wrapper::before, .avatar-wrapper::after {
+            font-family: Arial, sans-serif;
+            font-size: 42px;
+            position: absolute;
+            top: 15px;
+            color: #cbd5e0;
+            text-shadow: 0 0 10px #ffffff;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-wrapper::before {
+            content: '🕊️';
+            left: -40px;
+            transform: scaleX(-1) rotate(-15deg);
+        }
+
+        .avatar-wrapper::after {
+            content: '🕊️';
+            right: -40px;
+            transform: rotate(-15deg);
+        }
+
+        .card-container:hover .avatar-wrapper::before {
+            transform: scaleX(-1) rotate(-25deg) translateX(3px);
+        }
+
+        .card-container:hover .avatar-wrapper::after {
+            transform: rotate(-25deg) translateX(3px);
+        }
+
+        /* กรอบรูปออร่าสว่าง */
         .avatar-frame {
-            width: 80px;
-            height: 80px;
+            position: relative;
+            z-index: 2;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             padding: 3px;
-            background: linear-gradient(45deg, #ffffff, #888888, #ffffff);
+            background: linear-gradient(45deg, #ffffff, #cbd5e0, #ffffff);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             animation: rotate-glow 4s linear infinite;
         }
 
@@ -115,7 +154,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-color: #0d0d0d;
+            background-color: #ffffff;
             object-fit: cover;
             animation: rotate-glow 4s linear infinite reverse; 
         }
@@ -124,13 +163,14 @@
             font-size: 1.8rem;
             margin: 5px 0 0 0;
             letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: #2d3748;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .case-code {
             font-size: 0.8rem;
-            color: #d1d1d1;
+            color: #718096;
+            font-weight: 600;
             letter-spacing: 1.5px;
             margin-bottom: 15px;
         }
@@ -138,12 +178,13 @@
         .vtuber-lore {
             font-style: italic;
             font-size: 0.9rem;
-            color: #cccccc;
+            color: #4a5568;
             margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 12px;
-            border-left: 2px solid #ffffff;
+            background: #f7fafc;
+            padding: 10px;
+            border-left: 3px solid #cbd5e0;
             border-radius: 0 8px 8px 0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
         }
 
         .links-group {
@@ -152,15 +193,15 @@
             gap: 10px;
         }
 
-        /* ปุ่มกดโทนขาวดำน่ารักๆ มีลำแสงขาววิ่งผ่าน */
+        /* ปุ่มสไตล์สีขาวคลีน มีเงาวิ้วๆ */
         .btn-link {
             position: relative;
             text-decoration: none;
-            color: #ffffff;
-            background: #222222;
-            border: 1px solid #444444;
+            color: #2d3748;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 0.85rem;
             font-weight: 600;
             display: flex;
@@ -168,6 +209,7 @@
             justify-content: center;
             gap: 8px;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
             overflow: hidden;
             z-index: 1;
         }
@@ -179,7 +221,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(237, 242, 247, 0.8), transparent);
             transition: left 0.5s ease;
             z-index: -1;
         }
@@ -189,35 +231,37 @@
         }
 
         .btn-link:hover {
-            background: #ffffff;
-            color: #0d0d0d;
-            border-color: #ffffff;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+            background: #f7fafc;
+            border-color: #cbd5e0;
+            color: #1a202c;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
         }
 
         .btn-donate {
-            background: #ffffff;
-            color: #0d0d0d;
-            border-color: #ffffff;
+            background: #edf2f7;
+            color: #2b6cb0;
+            border-color: #cbd5e0;
         }
 
         .btn-donate:hover {
-            background: #e0e0e0;
-            color: #000000;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            background: #e2e8f0;
+            color: #2c5282;
+            box-shadow: 0 4px 15px rgba(203, 213, 224, 0.5);
         }
 
         .info-grid {
             margin-top: 20px;
-            border-top: 1px solid #333333;
+            border-top: 1px solid #edf2f7;
             padding-top: 15px;
         }
 
         .info-title {
             font-size: 0.75rem;
-            color: #aaaaaa;
+            color: #a0aec0;
             margin-bottom: 10px;
             letter-spacing: 1px;
+            font-weight: bold;
         }
 
         .tag-list {
@@ -231,17 +275,18 @@
 
         .tag-item {
             font-size: 0.7rem;
-            background: #222222;
-            color: #ffffff;
+            background: #f7fafc;
+            color: #4a5568;
             padding: 4px 10px;
             border-radius: 12px;
-            border: 1px solid #444444;
+            border: 1px solid #e2e8f0;
             transition: 0.2s;
+            font-weight: 500;
         }
 
         .tag-item:hover {
-            background: #ffffff;
-            color: #0d0d0d;
+            background: #e2e8f0;
+            color: #1a202c;
             cursor: pointer;
         }
 
@@ -249,16 +294,16 @@
             display: flex;
             justify-content: space-around;
             font-size: 0.7rem;
-            color: #888888;
+            color: #a0aec0;
         }
 
         /* =========================================
-           2. สไตล์สำหรับละอองแสง/ขนนกฉากหลัง
+           2. ละอองปีก/ดาว/ความสดใสฉากหลัง
            ========================================= */
         .snowflake {
             position: fixed;
             top: -10px;
-            color: #ffffff;
+            color: #a0aec0;
             font-size: 1rem;
             pointer-events: none;
             z-index: 1;
@@ -274,10 +319,9 @@
 </head>
 <body>
 
-    <!-- โครงสร้าง HTML เดิมเป๊ะๆ เปลี่ยนเฉพาะข้อความและคลาสตามโจทย์ -->
     <div class="card-container">
         
-        <div class="stamp-badge">👼 ANGEL // SECRET</div>
+        <div class="stamp-badge">🪶 ANGEL // SECRET</div>
 
         <div class="banner-wrapper">
             <img src="112.png" alt="VTuber Banner" class="banner-img">
@@ -293,7 +337,7 @@
             </div>
 
             <h1 class="detective-title">Phumjau</h1>
-            <div class="case-code">[ STATUS: LITTLE ANGEL ]</div>
+            <div class="case-code">👼 [ STATUS: LITTLE ANGEL ] 👼</div>
             
             <p class="vtuber-lore">
                 "เทวดาตัวน้อยที่แอบลงมาจากสวรรค์เพื่อมาสร้างความสุขให้ทุกคน!"
@@ -339,31 +383,27 @@
 
     </div>
 
-    <!-- สคริปต์ปล่อยละอองดาว/ขนนกฉากหลัง (ปรับให้เป็นธีมเทวดา) -->
+    <!-- สคริปต์ปล่อยละอองดาว ขนนก และหัวใจสว่างๆ -->
     <script>
         function createSnowflake() {
             const flake = document.createElement('div');
             flake.classList.add('snowflake');
             
-            // ใช้ไอคอนธีมเทวดา/ดาว/ขนนก สีขาว
-            const icons = ['✨', '👼', '❄', '✧', '🤍'];
+            const icons = ['✨', '🪶', '✧', '🤍', '❄️'];
             flake.innerText = icons[Math.floor(Math.random() * icons.length)];
             
-            // สุ่มตำแหน่ง ความเร็ว ขนาด และความโปร่งแสง
             flake.style.left = Math.random() * 100 + 'vw';
             flake.style.animationDuration = Math.random() * 3 + 3 + 's'; 
-            flake.style.opacity = Math.random() * 0.7 + 0.2;
-            flake.style.fontSize = Math.random() * 10 + 8 + 'px';
+            flake.style.opacity = Math.random() * 0.6 + 0.3;
+            flake.style.fontSize = Math.random() * 12 + 10 + 'px';
 
             document.body.appendChild(flake);
 
-            // ลบออกเมื่อตกลงไปพ้นจอ
             setTimeout(() => {
                 flake.remove();
             }, 6000);
         }
 
-        // ปล่อยละอองทุกๆ 250 มิลลิวินาที
         setInterval(createSnowflake, 250);
     </script>
 
