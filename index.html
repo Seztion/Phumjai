@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phumjau CARD</title>
+    <style>
+        /* =========================================
+           1. สไตล์พื้นฐานและการจัดวาง (ธีม เทวดาขาว-ดำ)
+           ========================================= */
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .card-container {
+            position: relative;
+            width: 380px;
+            background: #181818;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            z-index: 10;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* ลูกเล่น: ยกการ์ดลอยขึ้นและส่องแสงขาวนวลเมื่อเมาส์ชี้ */
+        .card-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* ลูกเล่น: ป้าย Badge เทวดา ตัวอักษรและแสงนวลๆ */
+        .stamp-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ffffff;
+            color: #0d0d0d;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            z-index: 5;
+            animation: pulse-angel 2s infinite alternate;
+        }
+
+        @keyframes pulse-angel {
+            0% { box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 25px rgba(255, 255, 255, 0.5); }
+        }
+
+        .banner-wrapper {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-container:hover .banner-img {
+            transform: scale(1.05);
+        }
+
+        .banner-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to top, #181818, transparent);
+        }
+
+        .card-content {
+            padding: 0 20px 20px 20px;
+            text-align: center;
+        }
+
+        .avatar-wrapper {
+            margin-top: -45px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* ลูกเล่น: กรอบรูปมีออร่าเทวดาสีขาวนวลวนรอบๆ */
+        .avatar-frame {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(45deg, #ffffff, #888888, #ffffff);
+            animation: rotate-glow 4s linear infinite;
+        }
+
+        @keyframes rotate-glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #0d0d0d;
+            object-fit: cover;
+            animation: rotate-glow 4s linear infinite reverse; 
+        }
+
+        .detective-title {
+            font-size: 1.8rem;
+            margin: 5px 0 0 0;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .case-code {
+            font-size: 0.8rem;
+            color: #d1d1d1;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .vtuber-lore {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            border-left: 2px solid #ffffff;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* ปุ่มกดโทนขาวดำน่ารักๆ มีลำแสงขาววิ่งผ่าน */
+        .btn-link {
+            position: relative;
+            text-decoration: none;
+            color: #ffffff;
+            background: #222222;
+            border: 1px solid #444444;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-link:hover::before {
+            left: 100%;
+        }
+
+        .btn-link:hover {
+            background: #ffffff;
+            color: #0d0d0d;
+            border-color: #ffffff;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-donate {
+            background: #ffffff;
+            color: #0d0d0d;
+            border-color: #ffffff;
+        }
+
+        .btn-donate:hover {
+            background: #e0e0e0;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        .info-grid {
+            margin-top: 20px;
+            border-top: 1px solid #333333;
+            padding-top: 15px;
+        }
+
+        .info-title {
+            font-size: 0.75rem;
+            color: #aaaaaa;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tag-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .tag-item {
+            font-size: 0.7rem;
+            background: #222222;
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid #444444;
+            transition: 0.2s;
+        }
+
+        .tag-item:hover {
+            background: #ffffff;
+            color: #0d0d0d;
+            cursor: pointer;
+        }
+
+        .credits {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.7rem;
+            color: #888888;
+        }
+
+        /* =========================================
+           2. สไตล์สำหรับละอองแสง/ขนนกฉากหลัง
+           ========================================= */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #ffffff;
+            font-size: 1rem;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- โครงสร้าง HTML เดิมเป๊ะๆ เปลี่ยนเฉพาะข้อความและคลาสตามโจทย์ -->
+    <div class="card-container">
+        
+        <div class="stamp-badge">👼 ANGEL // SECRET</div>
+
+        <div class="banner-wrapper">
+            <img src="112.png" alt="VTuber Banner" class="banner-img">
+            <div class="banner-overlay"></div>
+        </div>
+
+        <div class="card-content">
+            
+            <div class="avatar-wrapper">
+                <div class="avatar-frame">
+                    <img src="avatar.png" alt="VTuber Model" class="avatar-img">
+                </div>
+            </div>
+
+            <h1 class="detective-title">Phumjau</h1>
+            <div class="case-code">[ STATUS: LITTLE ANGEL ]</div>
+            
+            <p class="vtuber-lore">
+                "เทวดาตัวน้อยที่แอบลงมาจากสวรรค์เพื่อมาสร้างความสุขให้ทุกคน!"
+            </p>
+
+            <div class="links-group">
+                <a href="https://www.youtube.com/@SeztionV" class="btn-link" target="_blank">
+                    <span>📺 YOUTUBE CHANNEL</span>
+                </a>
+
+                <a href="https://facebook.com" class="btn-link" target="_blank">
+                    <span>📘 FACEBOOK PAGE</span>
+                </a>
+
+                <a href="https://tiktok.com" class="btn-link" target="_blank">
+                    <span>🎵 TIKTOK OFFICIAL</span>
+                </a>
+
+                <a href="https://discord.gg" class="btn-link" target="_blank">
+                    <span>⚔️ HQ DISCORD SERVER</span>
+                </a>
+
+                <a href="https://tipme.in.th" class="btn-link btn-donate" target="_blank">
+                    <span>🤍 FUNDING & DONATE (สนับสนุน)</span>
+                </a>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-title">ANGEL HASHTAGS</div>
+                <ul class="tag-list">
+                    <li class="tag-item">#PhumjauLIVE</li>
+                    <li class="tag-item">#PhumjauArt</li>
+                    <li class="tag-item">#PhumjauMeme</li>
+                </ul>
+
+                <div class="credits">
+                    <span><b>MAMA:</b> @ArtistName</span>
+                    <span><b>PAPA:</b> @RiggerName</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- สคริปต์ปล่อยละอองดาว/ขนนกฉากหลัง (ปรับให้เป็นธีมเทวดา) -->
+    <script>
+        function createSnowflake() {
+            const flake = document.createElement('div');
+            flake.classList.add('snowflake');
+            
+            // ใช้ไอคอนธีมเทวดา/ดาว/ขนนก สีขาว
+            const icons = ['✨', '👼', '❄', '✧', '🤍'];
+            flake.innerText = icons[Math.floor(Math.random() * icons.length)];
+            
+            // สุ่มตำแหน่ง ความเร็ว ขนาด และความโปร่งแสง
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.animationDuration = Math.random() * 3 + 3 + 's'; 
+            flake.style.opacity = Math.random() * 0.7 + 0.2;
+            flake.style.fontSize = Math.random() * 10 + 8 + 'px';
+
+            document.body.appendChild(flake);
+
+            // ลบออกเมื่อตกลงไปพ้นจอ
+            setTimeout(() => {
+                flake.remove();
+            }, 6000);
+        }
+
+        // ปล่อยละอองทุกๆ 250 มิลลิวินาที
+        setInterval(createSnowflake, 250);
+    </script>
+
+</body>
+</html>
