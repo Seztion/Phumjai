@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phumjau - Little Angel</title>
-    <!-- นำเข้าฟอนต์น่ารัก ละมุน มนๆ จาก Google Fonts -->
+    <!-- ฟอนต์น่ารัก ละมุน มนๆ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* =========================================
-           1. สไตล์พื้นฐานและการจัดวาง (เน้นสีขาวสว่าง นุ่มนิ่ม)
+           1. สไตล์พื้นฐาน (เน้นขาว ผสมดำนวล ถนอมสายตา)
            ========================================= */
         body {
-            background-color: #f4f6fb;
-            color: #4a5568;
-            font-family: 'Mali', 'Poppins', cursive, sans-serif; /* ฟอนต์ลายมือน่ารักมนๆ */
+            background-color: #121316; /* พื้นหลังจอนอกสีดำเข้ม ถนอมสายตา */
+            color: #ffffff;
+            font-family: 'Mali', 'Poppins', cursive, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,48 +29,48 @@
         .card-container {
             position: relative;
             width: 380px;
-            background: #ffffff;
-            border: 3px solid #f0f4f8;
-            border-radius: 30px; /* ขอบโค้งมนนุ่มฟู */
-            box-shadow: 0 15px 35px rgba(220, 228, 240, 0.7);
+            background: #1e2025; /* การ์ดสีเทาดำนวล ตัดกับส่วนประกอบสีขาว */
+            border: 2px solid #ffffff; /* ขอบขาวเด่นชัด */
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1);
             overflow: hidden;
             z-index: 10;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
         }
 
-        /* ยกการ์ดลอยขึ้นพร้อมเรืองแสงขาวนวลนุ่มๆ */
+        /* ยกการ์ดลอยพร้อมเรืองแสงขาวรอบๆ สบายตา */
         .card-container:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 20px 40px rgba(200, 215, 235, 0.8), 0 0 25px rgba(255, 255, 255, 0.9);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.25);
         }
 
-        /* ป้าย Badge เทวดามนๆ ทรงแคปซูลนุ่มฟู */
+        /* ป้าย Badge สีขาวตัวหนังสือดำ ตัดกันน่ารักๆ */
         .stamp-badge {
             position: absolute;
             top: 15px;
             right: 15px;
             background: #ffffff;
-            color: #7b8cde;
+            color: #121316;
             padding: 5px 14px;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             border-radius: 25px;
-            box-shadow: 0 4px 12px rgba(123, 140, 222, 0.15);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
             z-index: 5;
             animation: pulse-angel 2s infinite alternate ease-in-out;
         }
 
         @keyframes pulse-angel {
-            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(123, 140, 222, 0.15); }
-            100% { transform: scale(1.05); box-shadow: 0 6px 18px rgba(123, 140, 222, 0.3); }
+            0% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+            100% { transform: scale(1.05); box-shadow: 0 0 18px rgba(255, 255, 255, 0.6); }
         }
 
         .banner-wrapper {
             position: relative;
             height: 125px;
             overflow: hidden;
-            background-color: #eef2f7;
+            background-color: #2a2d34;
         }
 
         .banner-img {
@@ -89,7 +89,7 @@
             bottom: 0;
             width: 100%;
             height: 55px;
-            background: linear-gradient(to top, #ffffff, transparent);
+            background: linear-gradient(to top, #1e2025, transparent);
         }
 
         .card-content {
@@ -97,7 +97,7 @@
             text-align: center;
         }
 
-        /* จัดวางรูปพร้อมปีกนางฟ้าขนาบข้าง */
+        /* จัดวางรูปพร้อมปีกนางฟ้า */
         .avatar-wrapper {
             margin-top: -55px;
             margin-bottom: 5px;
@@ -105,13 +105,13 @@
             position: relative;
         }
 
-        /* ปีกนางฟ้าพริ้วๆ ขยับดุ๊กดิ๊ก */
+        /* ปีกนางฟ้าขาวนวลโบกเบาๆ */
         .avatar-wrapper::before, .avatar-wrapper::after {
             font-size: 44px;
             position: absolute;
             top: 15px;
             z-index: 1;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.08));
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
             animation: flap-wings 3s ease-in-out infinite alternate;
         }
 
@@ -133,7 +133,7 @@
             100% { transform: scaleX(-1) rotate(-22deg) translateY(-4px); }
         }
 
-        /* กรอบรูปออร่าสว่างมนกลม */
+        /* กรอบรูปขอบขาว */
         .avatar-frame {
             position: relative;
             z-index: 2;
@@ -141,8 +141,8 @@
             height: 88px;
             border-radius: 50%;
             padding: 4px;
-            background: linear-gradient(135deg, #ffffff, #e2e8f0, #ffffff);
-            box-shadow: 0 8px 20px rgba(160, 175, 200, 0.25);
+            background: linear-gradient(135deg, #ffffff, #888888, #ffffff);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             animation: rotate-glow 5s linear infinite;
         }
 
@@ -155,7 +155,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-color: #ffffff;
+            background-color: #121316;
             object-fit: cover;
             animation: rotate-glow 5s linear infinite reverse; 
         }
@@ -165,29 +165,29 @@
             font-weight: 700;
             margin: 6px 0 0 0;
             letter-spacing: 1px;
-            color: #2d3748;
-            text-shadow: 0 2px 10px rgba(225, 235, 245, 0.8);
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
 
         .case-code {
             font-size: 0.82rem;
-            color: #8a99ad;
+            color: #e2e8f0;
             font-weight: 600;
             letter-spacing: 1px;
             margin-bottom: 15px;
         }
 
-        /* ☁️ กล่องข้อความทรงก้อนเมฆ นุ่มนิ่ม */
+        /* ☁️ กล่องข้อความทรงก้อนเมฆ สีเทาเข้มตัดเส้นประสีขาว */
         .vtuber-lore {
             font-size: 0.88rem;
             font-weight: 600;
-            color: #5a6b82;
+            color: #f1f5f9;
             margin-bottom: 22px;
-            background: #f0f5fa;
+            background: #282b32;
             padding: 12px 16px;
-            border-radius: 20px; /* ขอบกล่องโค้งนุ่มฟู */
-            border: 2px dashed #d6e2f0; /* เส้นประนุ่มๆ สไตล์สมุดบันทึก */
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 10px rgba(230, 238, 248, 0.5);
+            border-radius: 20px;
+            border: 2px dashed #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             position: relative;
         }
 
@@ -197,15 +197,15 @@
             gap: 12px;
         }
 
-        /* ☁️ ปุ่มกดสไตล์หมอนนุ่มนิ่ม (Pillow Button) */
+        /* ☁️ ปุ่มกดพื้นดำขอบขาว พอเอาเมาส์ชี้จะกลายเป็นสีขาวสว่าง */
         .btn-link {
             position: relative;
             text-decoration: none;
-            color: #4a5568;
-            background: #ffffff;
-            border: 2px solid #edf2f7;
+            color: #ffffff;
+            background: #282b32;
+            border: 2px solid #ffffff;
             padding: 11px;
-            border-radius: 18px; /* ขอบปุ่มโค้งมนนุ่มฟู */
+            border-radius: 18px;
             font-size: 0.88rem;
             font-weight: 600;
             display: flex;
@@ -213,7 +213,7 @@
             justify-content: center;
             gap: 8px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 12px rgba(220, 228, 240, 0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             overflow: hidden;
             z-index: 1;
         }
@@ -225,7 +225,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.6s ease;
             z-index: -1;
         }
@@ -235,34 +235,34 @@
         }
 
         .btn-link:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            color: #1e293b;
-            box-shadow: 0 8px 20px rgba(200, 215, 235, 0.6);
+            background: #ffffff;
+            color: #121316;
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.3);
             transform: translateY(-3px);
         }
 
+        /* ปุ่มสนับสนุน (Donate) เป็นสีขาวเน้นๆ */
         .btn-donate {
-            background: #f0f5ff;
-            color: #5b73e8;
-            border-color: #dbe4ff;
+            background: #ffffff;
+            color: #121316;
+            border-color: #ffffff;
         }
 
         .btn-donate:hover {
-            background: #e5edff;
-            color: #435ebe;
-            box-shadow: 0 8px 22px rgba(180, 200, 255, 0.6);
+            background: #e2e8f0;
+            color: #000000;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
         }
 
         .info-grid {
             margin-top: 22px;
-            border-top: 2px stroke #f1f5f9;
+            border-top: 2px solid #282b32;
             padding-top: 16px;
         }
 
         .info-title {
             font-size: 0.75rem;
-            color: #94a3b8;
+            color: #cbd5e1;
             margin-bottom: 10px;
             letter-spacing: 1px;
             font-weight: 700;
@@ -280,17 +280,17 @@
         .tag-item {
             font-size: 0.75rem;
             font-weight: 600;
-            background: #f1f5f9;
-            color: #64748b;
+            background: #282b32;
+            color: #ffffff;
             padding: 5px 12px;
             border-radius: 15px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ffffff;
             transition: all 0.2s ease;
         }
 
         .tag-item:hover {
-            background: #e2e8f0;
-            color: #1e293b;
+            background: #ffffff;
+            color: #121316;
             transform: scale(1.05);
             cursor: pointer;
         }
@@ -309,7 +309,7 @@
         .snowflake {
             position: fixed;
             top: -10px;
-            color: #cbd5e1;
+            color: #ffffff;
             font-size: 1rem;
             pointer-events: none;
             z-index: 1;
@@ -345,7 +345,7 @@
             <h1 class="detective-title">Phumjau</h1>
             <div class="case-code">👼 [ STATUS: LITTLE ANGEL ] 👼</div>
             
-            <!-- ☁️ กล่องข้อความทรงก้อนเมฆนุ่มนิ่ม -->
+            <!-- ☁️ กล่องข้อความทรงก้อนเมฆถนอมสายตา -->
             <p class="vtuber-lore">
                 "เทวดาตัวน้อยที่แอบลงมาจากสวรรค์เพื่อมาสร้างความสุขให้ทุกคน! ✨"
             </p>
@@ -390,7 +390,7 @@
 
     </div>
 
-    <!-- สคริปต์ปล่อยละอองดาว ขนนก และหัวใจน่ารักๆ -->
+    <!-- ละอองดาวสีขาวลอยสว่างๆ บนพื้นหลังมืด สบายตา -->
     <script>
         function createSnowflake() {
             const flake = document.createElement('div');
@@ -401,7 +401,7 @@
             
             flake.style.left = Math.random() * 100 + 'vw';
             flake.style.animationDuration = Math.random() * 3 + 3 + 's'; 
-            flake.style.opacity = Math.random() * 0.6 + 0.3;
+            flake.style.opacity = Math.random() * 0.5 + 0.2;
             flake.style.fontSize = Math.random() * 12 + 10 + 'px';
 
             document.body.appendChild(flake);
